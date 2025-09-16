@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import type { DocumentUpload }  from '../../types/Document.js';
+import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
 
 interface Props {
   uploaderId: string;
@@ -14,14 +15,49 @@ const DocumentUpload: React.FC<Props> = ({ uploaderId, uploaderRole, onUpload })
   const [patientId, setPatientId] = useState('');
   const [description, setDescription] = useState('');
 
-  // Simulate S3 key generation (replace with backend logic)
+
+  // S3 configuration (replace with your actual values or use env variables)
+  const REGION = 'us-east-1'; // e.g., 'us-east-1'
+  const BUCKET = 'your-s3-bucket-name';
+  // Credentials should be provided by Cognito or other secure method
+  // For demo, this is left out. Never hardcode secrets in production!
+  const s3 = new S3Client({ region: REGION });
+
+  // Generate a secure S3 key for the file
   const generateS3Key = (file: File) => {
     return `${patientId}/${Date.now()}_${file.name}`;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // Upload file to S3 using AWS SDK
+  const uploadToS3 = async (file: File, key: string) => {
+    try {
+      // Convert file to ArrayBuffer
+      const fileBuffer = await file.arrayBuffer();
+      const command = new PutObjectCommand({
+        Bucket: BUCKET,
+        Key: key,
+        Body: fileBuffer,
+        ContentType: file.type,
+      });
+      await s3.send(command);
+      return true;
+    } catch (error) {
+      console.error('S3 upload error:', error);
+      return false;
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!file || !title || !type || !patientId) return;
+    const s3Key = generateS3Key(file);
+    // Upload file to S3
+    const success = await uploadToS3(file, s3Key);
+    if (!success) {
+      alert('File upload failed. Please try again.');
+      return;
+    }
+    // Build document metadata for backend
     const doc: DocumentUpload = {
       file,
       metadata: {
@@ -35,7 +71,7 @@ const DocumentUpload: React.FC<Props> = ({ uploaderId, uploaderRole, onUpload })
         userId: uploaderId,
         role: uploaderRole,
       },
-      s3Key: generateS3Key(file),
+      s3Key,
     };
     onUpload(doc);
   };

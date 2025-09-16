@@ -1,1 +1,4 @@
 node_modules/
+
+# Prevent committing sensitive AWS config
+src/awsConfig.ts
