@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import type { DocumentUpload }  from '../../types/Document.js';
 import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
+import { TruEvalConfig } from '../../awsConfig.js';
 
 interface Props {
   uploaderId: string;
@@ -8,7 +9,7 @@ interface Props {
   onUpload: (doc: DocumentUpload) => void;
 }
 
-const DocumentUpload: React.FC<Props> = ({ uploaderId, uploaderRole, onUpload }) => {
+const DocumentUploadForm: React.FC<Props> = ({ uploaderId, uploaderRole, onUpload }) => {
   const [file, setFile] = useState<File | null>(null);
   const [title, setTitle] = useState('');
   const [type, setType] = useState('');
@@ -16,9 +17,9 @@ const DocumentUpload: React.FC<Props> = ({ uploaderId, uploaderRole, onUpload })
   const [description, setDescription] = useState('');
 
 
-  // S3 configuration (replace with your actual values or use env variables)
-  const REGION = 'us-east-1'; // e.g., 'us-east-1'
-  const BUCKET = 'your-s3-bucket-name';
+  // S3 configuration from awsConfig.ts
+  const REGION = TruEvalConfig.s3.region;
+  const BUCKET = TruEvalConfig.s3.bucketName;
   // Credentials should be provided by Cognito or other secure method
   // For demo, this is left out. Never hardcode secrets in production!
   const s3 = new S3Client({ region: REGION });
@@ -89,4 +90,4 @@ const DocumentUpload: React.FC<Props> = ({ uploaderId, uploaderRole, onUpload })
   );
 };
 
-export default DocumentUpload;
+export default DocumentUploadForm;

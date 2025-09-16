@@ -1,1 +1,0 @@
-cb479afba413dfd243fbf32724aa9c86a04ca45b 637 awsConfig.ts

@@ -14,7 +14,7 @@ export const TruEvalConfig = {
         domain: ''
     },
     s3: {
-        bucketName: '',
+        bucketName: 'trueval-bucket',
         region: 'us-east-1',
         ServerSideEncryption: 'AES256'
     },
