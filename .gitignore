@@ -1,4 +1,5 @@
 node_modules/
 
-# Prevent committing sensitive AWS config
+# Prevent committing sensitive AWS config and OIDC credentials
 src/awsConfig.ts
+src/oidcConfig.ts

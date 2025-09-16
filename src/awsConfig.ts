@@ -1,15 +1,10 @@
 import { ServerSideEncryption } from "@aws-sdk/client-s3"
 
-export const cognitoConfig = {
-    cognitoDomain: 'https://us-east-1u4bsrpmuh.auth.us-east-1.amazoncognito.com',
-    clientId: '1j4agkj0dddlgbl69t83ckr7q3',
-    redirectUri: 'http://localhost:5173/user'
-}
-
+// Configuration for AWS services (S3, CloudTrail, etc.)
 export const TruEvalConfig = {
     cognito: {
         userPoolId: 'us-east-1u4bsrpmuh',
-        clientId: '1j4agkj0dddlgbl69t83ckr7q3',
+        clientId: '7566unmbfs2jvnnth4eascgiv0',
         identityPoolId: '',
         domain: ''
     },
