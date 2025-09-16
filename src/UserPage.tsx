@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import "./assets/UserPage.css";
 import { useLocation } from "react-router-dom";
 import { useAuth } from "./AuthContext.js";
 import { cognitoConfig } from "./awsConfig.js";
@@ -45,13 +46,19 @@ const UserPage: React.FC = () => {
     };
 
     return (
-        <div>
-            <h1>User Page</h1>
-            <DocumentUploadForm
-                uploaderId={uploaderId}
-                uploaderRole={uploaderRole}
-                onUpload={handleDocumentUpload}
-            />
+        <div className="user-page-container">
+            <h1 className="user-page-title">User Dashboard</h1>
+            <section style={{width: '100%', marginBottom: '2rem'}}>
+                <DocumentUploadForm
+                    uploaderId={uploaderId}
+                    uploaderRole={uploaderRole}
+                    onUpload={handleDocumentUpload}
+                    className="document-upload-form"
+                />
+            </section>
+            <div style={{color: '#888', fontSize: '1rem', marginTop: '1.5rem'}}>
+                <span>Welcome! Upload your medical documents securely to the cloud.</span>
+            </div>
         </div>
     );
 };

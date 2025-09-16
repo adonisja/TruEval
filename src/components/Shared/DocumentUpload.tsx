@@ -7,9 +7,10 @@ interface Props {
   uploaderId: string;
   uploaderRole: 'doctor' | 'patient' | 'caretaker';
   onUpload: (doc: DocumentUpload) => void;
+  className?: string;
 }
 
-const DocumentUploadForm: React.FC<Props> = ({ uploaderId, uploaderRole, onUpload }) => {
+const DocumentUploadForm: React.FC<Props> = ({ uploaderId, uploaderRole, onUpload, className }) => {
   const [file, setFile] = useState<File | null>(null);
   const [title, setTitle] = useState('');
   const [type, setType] = useState('');
@@ -78,13 +79,13 @@ const DocumentUploadForm: React.FC<Props> = ({ uploaderId, uploaderRole, onUploa
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Upload Medical Document</h2>
+    <form onSubmit={handleSubmit} className={className}>
+      <h2 style={{color: '#4f46e5', marginBottom: '1rem'}}>Upload Medical Document</h2>
       <input type="file" accept=".pdf,.jpg,.png" onChange={e => setFile(e.target.files?.[0] || null)} required />
       <input type="text" placeholder="Title" value={title} onChange={e => setTitle(e.target.value)} required />
-      <input type="text" placeholder="Type" value={type} onChange={e => setType(e.target.value)} required />
+      <input type="text" placeholder="Type (e.g. MRI, X-ray)" value={type} onChange={e => setType(e.target.value)} required />
       <input type="text" placeholder="Patient ID" value={patientId} onChange={e => setPatientId(e.target.value)} required />
-      <textarea placeholder="Description" value={description} onChange={e => setDescription(e.target.value)} />
+      <textarea placeholder="Description (optional)" value={description} onChange={e => setDescription(e.target.value)} rows={3} />
       <button type="submit">Upload</button>
     </form>
   );
