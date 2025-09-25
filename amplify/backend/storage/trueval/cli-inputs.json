@@ -1,0 +1,14 @@
+{
+  "resourceName": "trueval",
+  "policyUUID": "f637aa42",
+  "bucketName": "truevalbucket",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "S3Trigger33ea1ef1",
+  "groupAccess": {}
+}

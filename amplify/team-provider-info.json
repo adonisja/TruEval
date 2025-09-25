@@ -1,0 +1,56 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-trueval-dev-e991c-authRole",
+      "UnauthRoleArn": "arn:aws:iam::586794453404:role/amplify-trueval-dev-e991c-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::586794453404:role/amplify-trueval-dev-e991c-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-trueval-dev-e991c-deployment",
+      "UnauthRoleName": "amplify-trueval-dev-e991c-unauthRole",
+      "StackName": "amplify-trueval-dev-e991c",
+      "StackId": "arn:aws:cloudformation:us-east-1:586794453404:stack/amplify-trueval-dev-e991c/c1884c60-94d7-11f0-a7fb-127983a4f67d",
+      "AmplifyAppId": "d332wonjz090wf"
+    },
+    "categories": {
+      "auth": {
+        "truevale2f1006f": {}
+      },
+      "function": {
+        "S3Trigger13200297": {
+          "deploymentBucketName": "amplify-trueval-dev-e991c-deployment",
+          "s3Key": "amplify-builds/S3Trigger13200297-34734934326674653034-build.zip"
+        }
+      },
+      "storage": {
+        "trueval": {}
+      }
+    }
+  },
+  "truevaldev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-trueval-truevaldev-5fb72-authRole",
+      "UnauthRoleArn": "arn:aws:iam::586794453404:role/amplify-trueval-truevaldev-5fb72-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::586794453404:role/amplify-trueval-truevaldev-5fb72-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-trueval-truevaldev-5fb72-deployment",
+      "UnauthRoleName": "amplify-trueval-truevaldev-5fb72-unauthRole",
+      "StackName": "amplify-trueval-truevaldev-5fb72",
+      "StackId": "arn:aws:cloudformation:us-east-1:586794453404:stack/amplify-trueval-truevaldev-5fb72/c9f1c8a0-94db-11f0-8268-0affc073cdeb",
+      "AmplifyAppId": "d1yrr7ynn7q7y4"
+    },
+    "categories": {
+      "auth": {
+        "trueval050aad08": {}
+      },
+      "function": {
+        "S3Trigger33ea1ef1": {
+          "deploymentBucketName": "amplify-trueval-truevaldev-5fb72-deployment",
+          "s3Key": "amplify-builds/S3Trigger33ea1ef1-78574971457543497137-build.zip"
+        }
+      },
+      "storage": {
+        "trueval": {}
+      }
+    }
+  }
+}
